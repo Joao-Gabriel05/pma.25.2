@@ -66,7 +66,15 @@ services:
     hostname: auth
     environment:
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
-
+      
+  exchange:
+    build: ./exchange-service
+    hostname: exchange
+    environment:
+      API_BASE_URL: https://economia.awesomeapi.com.br/json/last
+    restart: always
+    deploy:
+      replicas: 1
 
   gateway:
     build:
